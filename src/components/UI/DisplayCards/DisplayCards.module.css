@@ -1,0 +1,18 @@
+.DisplayCards{
+    color: black;
+    align-content: center;
+    width: 70%;
+    border: 1px solid #ccc;
+    background-color: white;
+    box-shadow: 1px 1px 1px black;
+    box-sizing: border-box;
+}
+
+@keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
