@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import classes from '../DisplayCards/DisplayCards.module.css';
 import Aux from '../../../hoc/Aux';
+import axios from 'axios';
 
 class addCard extends Component {
     constructor() {
@@ -11,16 +12,7 @@ class addCard extends Component {
     addCardHandler(event){
         event.preventDefault();
         const data = new FormData(event.target);
-        console.log(data)
-        fetch('http://192.168.10.80:8000/siscob/default/line_of_business_api', {
-              method: 'POST',
-              headers: {
-
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(data)
-            });
+        axios.post('http://192.168.10.80:8000/siscob/default/line_of_business_api', data);
     }
 
     render(){
