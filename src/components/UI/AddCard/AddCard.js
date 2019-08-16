@@ -3,10 +3,15 @@ import classes from '../DisplayCards/DisplayCards.module.css';
 import Aux from '../../../hoc/Aux';
 import axios from 'axios';
 
-class addCard extends Component {
-    constructor() {
-        super();
+class AddCard extends Component {
+    state={
+        ids: []
+    }
+
+    constructor(props) {
+        super(props);
         this.addCardHandler = this.addCardHandler.bind(this);
+        //console.log(this.props.ids)
     }
 
     addCardHandler(event){
@@ -15,23 +20,35 @@ class addCard extends Component {
         axios.post('http://192.168.10.80:8000/siscob/default/line_of_business_api', data);
     }
 
+    deleteHanlder(){
+        console.log('tryin to dilit')
+        axios.delete('http://192.168.10.80:8000/siscob/default/line_of_business_api',
+        {   
+            data:{
+                '_id':'5d56d0cb2356c2f2f3cf2af1'
+          }});
+    }
+
     render(){
-        let ids = ["name","category","subcategory","code","tax","add_date"]
 
         return(
             <div className={classes.DisplayCards}>
                 <form onSubmit={this.addCardHandler}>
-                    {ids.map((val)=>{
-                        console.log(val)
+                    {this.props.ids.map((val)=>{
                         return(
-                            <input id={val} key={val} name={val} type="text"/>
+                            <Aux key={val}>
+                                <label>{val} </label>
+                                <input id={val} key={val} name={val} type="text"/>
+                                <br/>
+                            </Aux>
                         );
                     })}
                     <button>Enviar</button>
                 </form>
+                <button onClick={this.deleteHanlder}>Borrar</button>
             </div>
         );
     }
 };
 
-export default addCard;
+export default AddCard;
