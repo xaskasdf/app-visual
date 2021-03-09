@@ -19,7 +19,7 @@ class App extends Component {
         return response.json()
     })
     .then(data => {
-        this.setState({linesOfBusiness:data.giros})
+        this.setState({entitySchema:data.entityKey})
     })*/
 
     fetch("http://localhost:8000/controller/endpoint/schema/"+this.state.entityKey+".json")
