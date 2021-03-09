@@ -17,12 +17,12 @@ class AddCard extends Component {
     addCardHandler(event){
         event.preventDefault();
         const data = new FormData(event.target);
-        axios.post('http://192.168.10.80:8000/siscob/default/line_of_business_api', data);
+        axios.post('http://localhost:8000/controller/endpoint', data);
     }
 
     deleteHanlder(){
         console.log('tryin to dilit')
-        axios.delete('http://192.168.10.80:8000/siscob/default/line_of_business_api',
+        axios.delete('http://localhost:8000/controller/endpoint',
         {   
             data:{
                 '_id':'5d56d0cb2356c2f2f3cf2af1'
