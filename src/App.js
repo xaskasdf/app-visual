@@ -14,7 +14,7 @@ class App extends Component {
   
 
   componentDidMount(){
-    /*fetch("http://192.168.10.80:8000/siscob/default/line_of_business_api.json")
+    /*fetch("http://localhost:8000/controller/endpoint")
     .then(response => {
         return response.json()
     })
@@ -22,7 +22,7 @@ class App extends Component {
         this.setState({linesOfBusiness:data.giros})
     })*/
 
-    fetch("http://192.168.10.80:8000/siscob/default/entityFields/"+this.state.entityKey+".json")
+    fetch("http://localhost:8000/controller/endpoint/schema/"+this.state.entityKey+".json")
     .then(response => {
         return response.json()
     })
@@ -43,14 +43,14 @@ class App extends Component {
 
     /*let lines = (
       <div>
-        {this.state.linesOfBusiness.map((line_of_business)=>{
+        {this.state.entitySchema.map((entity)=>{
           return <DisplayCards
-            name={line_of_business.name}
-            category={line_of_business.category}
-            subcategory={line_of_business.subcategory}
-            code={line_of_business.code}
-            key={line_of_business.code}
-            tax={line_of_business.tax_subject}
+            name={entity.name}
+            category={entity.category}
+            subcategory={entity.subcategory}
+            code={entity.code}
+            key={entity.code}
+            tax={entity.tax_subject}
           />
         })}
       </div>
